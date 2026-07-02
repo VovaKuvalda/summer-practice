@@ -4,14 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ТатИТнефть</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {},
+        },
+      };
+    </script>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
   <body class="bg-white dark:bg-[#2C2C2E] dark:text-[#E0E0E0]">
     <header class="border-b border-gray-300">
-      <div class="p-6 flex flex-col items-center gap-4">
-        <h1 class="font-bold text-3xl md:text-3base lg:text-5xl">
-          ООО«ТатИТнефть»
-        </h1>
+      <h1 class="font-bold text-center text-3xl md:text-3base lg:text-5xl">
+        ООО«ТатИТнефть»
+      </h1>
+      <div class="p-6 flex justify-center gap-4">
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 dark:hover:shadow-gray-500"
+        >
+          <span id="theme-icon">🌙</span>
+          <span class="ml-2 text-bold">Тема</span>
+        </button>
+
         <button
           id="openBtn"
           class="bg-[#0ba374] px-4 py-2 rounded-xl text-white font-bold items-center hover:bg-[#e84342] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 dark:hover:shadow-red-900"
@@ -57,7 +84,6 @@
                 >https://hh.ru/employer/3154691</a
               >
             </p>
-
           </div>
         </div>
 
@@ -98,39 +124,60 @@
           Технологии, которые используются в работе компании
         </h2>
         <div class="flex flex-wrap gap-6">
-          <a href="https://ru.wikipedia.org/wiki/HTML5" target="_blank">
-            <div
-              class="border border-gray-300 p-4 rounded-xl w-32 h-32 flex items-center justify-center bg-white hover:-translate-y-2 hover:shadow-xl transition-all duration-300 dark:hover:shadow-gray-500"
-            >
-              <img
-                src="images/html5.png"
-                alt="html5Logo"
-                class="w-full h-full object-contain"
-              />
+          <div
+            class="border border-gray-300 dark:border-gray-700 p-4 rounded-xl w-80 flex items-start gap-4 bg-white dark:bg-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 dark:hover:shadow-gray-500"
+          >
+            <img
+              src="images/HTML5.webp"
+              alt="html5Logo"
+              class="w-12 h-12 object-contain flex-shrink-0"
+            />
+            <div>
+              <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+                HTML5
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Язык гипертекстовой разметки для структурирования веб-страниц
+              </p>
             </div>
-          </a>
-          <a href="https://ru.wikipedia.org/wiki/CSS" target="_blank">
-            <div
-              class="border border-gray-300 p-4 rounded-xl w-32 h-32 flex items-center justify-center bg-white hover:-translate-y-2 hover:shadow-xl transition-all duration-300 dark:hover:shadow-gray-500"
-            >
-              <img
-                src="images/css.webp"
-                alt="cssLogo"
-                class="w-full h-full object-contain"
-              />
+          </div>
+
+          <div
+            class="border border-gray-300 dark:border-gray-700 p-4 rounded-xl w-80 flex items-start gap-4 bg-white dark:bg-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 dark:hover:shadow-gray-500"
+          >
+            <img
+              src="images/css.webp"
+              alt="cssLogo"
+              class="w-12 h-12 object-contain flex-shrink-0"
+            />
+            <div>
+              <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+                CSS3
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Каскадные таблицы стилей для оформления и визуального оформления
+                сайтов
+              </p>
             </div>
-          </a>
-          <a href="https://ru.wikipedia.org/wiki/JavaScript" target="_blank">
-            <div
-              class="border border-gray-300 p-4 rounded-xl w-32 h-32 flex items-center justify-center bg-white hover:-translate-y-2 hover:shadow-xl transition-all duration-300 dark:hover:shadow-gray-500"
-            >
-              <img
-                src="images/js.png"
-                alt="jsLogo"
-                class="w-full h-full object-contain"
-              />
+          </div>
+
+          <div
+            class="border border-gray-300 dark:border-gray-700 p-4 rounded-xl w-80 flex items-start gap-4 bg-white dark:bg-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 dark:hover:shadow-gray-500"
+          >
+            <img
+              src="images/js.png"
+              alt="jsLogo"
+              class="w-12 h-12 object-contain flex-shrink-0"
+            />
+            <div>
+              <h3 class="font-bold text-lg text-gray-900 dark:text-white">
+                JavaScript
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Язык программирования для создания интерактивных веб-приложений
+              </p>
             </div>
-          </a>
+          </div>
         </div>
       </div>
 
@@ -508,5 +555,37 @@
         </p>
       </div>
     </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const button = document.getElementById("theme-toggle");
+        const icon = document.getElementById("theme-icon");
+
+        if (!button) {
+          console.error("Кнопка не найдена!");
+          return;
+        }
+
+        function updateTheme() {
+          const html = document.documentElement;
+          if (html.classList.contains("dark")) {
+            html.classList.remove("dark");
+            localStorage.theme = "light";
+            icon.textContent = "🌙";
+          } else {
+            html.classList.add("dark");
+            localStorage.theme = "dark";
+            icon.textContent = "☀️";
+          }
+        }
+
+        if (document.documentElement.classList.contains("dark")) {
+          icon.textContent = "☀️";
+        }
+
+        button.addEventListener("click", updateTheme);
+        console.log("Кнопка темы работает!");
+      });
+    </script>
   </body>
 </html>
